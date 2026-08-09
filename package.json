@@ -1,0 +1,16 @@
+{
+	"type": "module",
+	"module": "src/index.ts",
+	"dependencies": {
+		"discord.js": "~14.27.0"
+	},
+	"devDependencies": {
+		"@types/node": "~26.1.2",
+		"typescript": "~7.0.2"
+	},
+	"scripts": {
+		"start": "node --env-file=.env src/index.ts",
+		"build": "pnpm tsc",
+		"prod": "pnpm build && node --env-file=.env dist/index.js"
+	}
+}
