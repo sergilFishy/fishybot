@@ -1,15 +1,9 @@
-import { Client, GatewayIntentBits, Events } from "discord.js";
+import { Client, GatewayIntentBits } from "discord.js";
+import * as myEvents from "./events/index.ts"
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
-})
-
-client.on(Events.ClientReady, (_client) => {
-    console.log("hewwo")
 });
+const events = Object.values(myEvents);
 
-client.on(Events.MessageCreate, async message => {
-    const channel = await message.guild?.channels.fetch(message.channelId);
-    console.log(`guild: ${message.guild?.name}, channel: ${channel?.name}, message: ${message.content}`)
-});
-
-client.login(process.env.BOT_TOKEN);
+await client.login(process.env.BOT_TOKEN);
+events.forEach(event => event.default(client));
