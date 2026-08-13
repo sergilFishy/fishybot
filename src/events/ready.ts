@@ -1,4 +1,4 @@
-import welcome from "../modules/welcome.ts";
+import welcome from "../utils/welcome.ts";
 import { Events, type Client } from "discord.js";
 
 export default function (client: Client) {

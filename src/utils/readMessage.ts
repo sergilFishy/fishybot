@@ -1,5 +1,5 @@
 import { MessagePayload, type Message, type OmitPartialGroupDMChannel } from "discord.js";
-import isUserABot from "../utils/isUserABot.ts";
+import isUserABot from "./isUserABot.ts";
 
 export default async function (message: OmitPartialGroupDMChannel<Message>) {
     if (isUserABot(message.author)) return;

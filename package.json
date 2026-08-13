@@ -11,6 +11,7 @@
 	"scripts": {
 		"start": "node --env-file=.env src/index.ts",
 		"build": "pnpm tsc",
-		"prod": "pnpm build && node --env-file=.env dist/index.js"
+		"prod": "pnpm build && node --env-file=.env dist/index.js",
+		"refresh-commands": "pnpm build && node --env-file=.env dist/utils/registerSlashCommands.js"
 	}
 }
