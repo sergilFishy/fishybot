@@ -3,7 +3,7 @@ import type { IFishClient } from "../interfaces/fishClient.js";
 
 export default async function (interaction: BaseInteraction, client: Client) {
     if (!interaction.isChatInputCommand()) return;
-    const command = (<IFishClient>client).commands.get(interaction.commandName);
+    const command = (client as IFishClient).commands.get(interaction.commandName);
     if (!command) return;
 
     try {
