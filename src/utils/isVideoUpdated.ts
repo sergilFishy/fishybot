@@ -1,8 +1,7 @@
-import type { IVideoResponsebody } from "../interfaces/youtubeApiVideoResponse.js";
+import fetchVideo from "./fetchVideo.ts";
 
-export default async function (videoId: string): Promise<IVideoResponsebody> {
-    const data = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.YT_API_KEY}&part=snippet`)
-    const video = await data.json();
-    
-    return video as IVideoResponsebody;
+export default async function(videoId: string): Promise<boolean> {
+    const video = await fetchVideo(videoId);
+    if (Number(video.pageInfo.totalResults) <= 0) return false;
+    return true;
 }
